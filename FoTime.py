@@ -10,6 +10,10 @@ WIDTH,HEIGHT = 800,700
 DISPLAYSURF = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("TIME")
 
+icon_image = pygame.image.load("time2.jpg")
+icon_image = pygame.transform.scale(icon_image, (45, 45))
+pygame.display.set_icon(icon_image)
+
 BLACK = (0,0,0)
 WHITE = (255,255,255)
 
@@ -66,9 +70,9 @@ def GamePlay(cc):
         now3 = datetime.datetime.now().date()
         now4 = datetime.datetime.now().time()
         now2 = datetime.datetime.now().timestamp()
-
-        check = now2 + 53*24*3600
-        check2 = datetime.datetime.fromtimestamp(check)
+        now5 = datetime.datetime(int("{}".format(now3.year)),3,30).date()
+        ye = now5 - now3
+        now = now3.year - birth.year - ye.days/365
    
 
         seconds = now2 - birth2
@@ -82,7 +86,7 @@ def GamePlay(cc):
         minutes = round(seconds/60,3)
         hours = round(seconds/(60*60),5)
         days = round(seconds/(60*60*24),3)
-        years = round(seconds/(60*60*24*365),3)
+        years = round(now,3)
 
         DISPLAYSURF.fill(BLACK)
        
@@ -119,4 +123,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
