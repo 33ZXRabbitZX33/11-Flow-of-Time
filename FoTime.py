@@ -10,7 +10,7 @@ WIDTH,HEIGHT = 800,700
 DISPLAYSURF = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("TIME")
 
-icon_image = pygame.image.load("time2.jpg")
+icon_image = pygame.image.load("2.png")
 icon_image = pygame.transform.scale(icon_image, (45, 45))
 pygame.display.set_icon(icon_image)
 
@@ -55,8 +55,7 @@ def FONT2(ann,color,x,y,size=50):
 birth = datetime.datetime(2001,3,30)
 birth2 = birth.timestamp()
 
-new = datetime.datetime(2024,1,1)
-new2 = new.timestamp()
+
 
 def GamePlay(cc):
      
@@ -72,21 +71,23 @@ def GamePlay(cc):
         now2 = datetime.datetime.now().timestamp()
         now5 = datetime.datetime(int("{}".format(now3.year)),3,30).date()
         ye = now5 - now3
-        now = now3.year - birth.year - ye.days/365
-   
+        age = now3.year - birth.year - ye.days/365
 
+        new = datetime.datetime(int("{}".format(now3.year+1)),1,1)
+        new2 = new.timestamp()
+   
         seconds = now2 - birth2
         new3 = int(round((new2 - now2),3))
 
         font = pygame.font.SysFont("consolas",40)
-        font = font.render("<{}>to<2024>".format(new3),True,WHITE)
+        font = font.render("<{}>to<{}>".format(new3,now3.year+1),True,WHITE)
         font_size = font.get_size()
 
         seconds2 = round(seconds,1)
         minutes = round(seconds/60,3)
         hours = round(seconds/(60*60),5)
         days = round(seconds/(60*60*24),3)
-        years = round(now,3)
+        years = round(age,3)
 
         DISPLAYSURF.fill(BLACK)
        
