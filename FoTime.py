@@ -56,7 +56,7 @@ birth = datetime.datetime(2001,3,30)
 birth2 = birth.timestamp()
 
 
-
+count = datetime.datetime(2024,2,4).timestamp()
 def GamePlay(cc):
      
   
@@ -104,6 +104,9 @@ def GamePlay(cc):
         FONT("Days",WHITE,340,-160)
         FONT("33ZX",WHITE,-240,-240)
         FONT("Flow of time",WHITE,-45,-290,20)
+
+        sd = round((now2 - count)/(3600*24),2)
+        FONT2(f"Day {sd}",WHITE,560,250) ###
 
 
         FONT(now3,WHITE,-80,-80,80)
