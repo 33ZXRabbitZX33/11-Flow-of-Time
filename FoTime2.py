@@ -80,8 +80,8 @@ class clockcon():
         self.radius = 90
     def draw(self,color,secs,mins):
         pygame.draw.circle(DISPLAYSURF,color,self.point,self.radius)
-        pygame.draw.line(DISPLAYSURF,BLACK,self.point,(600+self.radius*sin((pi*secs)/30),580-self.radius*cos((pi*secs)/30)))
-        pygame.draw.line(DISPLAYSURF,BLACK,self.point,(600+self.radius*sin((pi*mins)/30),580-self.radius*cos((pi*mins)/30)))
+        pygame.draw.line(DISPLAYSURF,BLACK,self.point,(570+self.radius*sin((pi*secs)/30),580-self.radius*cos((pi*secs)/30)))
+        pygame.draw.line(DISPLAYSURF,BLACK,self.point,(570+self.radius*sin((pi*mins)/30),580-self.radius*cos((pi*mins)/30)))
 
 def FONT(ann,color,x,y,size=50):
      font = pygame.font.SysFont("consolas",size)
