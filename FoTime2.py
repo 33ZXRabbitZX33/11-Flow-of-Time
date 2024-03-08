@@ -7,7 +7,7 @@ import json
 
 pygame.init()
 
-WIDTH,HEIGHT = 1000,700
+WIDTH,HEIGHT = 1000,750
 
 DISPLAYSURF = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("TIME")
@@ -18,6 +18,7 @@ pygame.display.set_icon(icon_image)
 
 BLACK = (0,0,0)
 WHITE = (255,255,255)
+GREEN = (0,128,0)
 
 FPS = 60
 
@@ -98,7 +99,7 @@ def FONT2(ann,color,x,y,size=50):
 birth = datetime.datetime(2001,3,30)
 birth2 = birth.timestamp()
 
-count = datetime.datetime(2024,2,4).timestamp()
+count = datetime.datetime(2024,2,4).timestamp() ################################### Start time
 global n
 n = True
 
@@ -126,7 +127,7 @@ def GamePlay(cc):
     font_size = font_pause2.get_size()
 
     font_pause = pygame.font.SysFont("consolas",50)
-    font_pause = font_pause.render("<Working...>",True,WHITE)
+    font_pause = font_pause.render("<Working...>",True,GREEN)
     font_size_pause = font_pause.get_size()
     x = 650
     y = 350
@@ -162,12 +163,17 @@ def GamePlay(cc):
 
         new = datetime.datetime(int("{}".format(now3.year+1)),1,1)
         new2 = new.timestamp()
-   
+
+        times2 = datetime.datetime(int("{}".format(now3.year+1)),1,1).timestamp()
+        times3 = datetime.datetime(int("{}".format(now3.year)),1,1).timestamp()
+        times4 = times2 - times3
+
         seconds = times - birth2
-        new3 = int(round((new2 - times),3))
+        timeleft = int(round((new2 - times),3))
+        rate = round((1-timeleft/times4)*100)
 
         font = pygame.font.SysFont("consolas",40)
-        font = font.render("<{}>to<{}>".format(new3,now3.year+1),True,WHITE)
+        font = font.render("<{}>({}%)to<{}>".format(timeleft,rate,now3.year+1),True,WHITE)
         font_size = font.get_size()
 
         
@@ -180,7 +186,7 @@ def GamePlay(cc):
         DISPLAYSURF.fill(BLACK)
         
         FONT(years,WHITE,0,-240)
-        FONT(days,WHITE,160,-160)
+        FONT(days,WHITE,200,-160)
    
         DISPLAYSURF.blit(font,( (WIDTH-font_size[0])/2 -200,(HEIGHT-font_size[1])/2 -160 ) )
 
@@ -188,13 +194,15 @@ def GamePlay(cc):
         FONT2(minutes,WHITE,50,545)
         FONT2(seconds2,WHITE,50,620)
 
-        FONT("Tan Tan",WHITE,240,-240)
-        FONT("Days",WHITE,340,-160)
+        FONT("Tan Tan ",WHITE,240,-240)
+        FONT("Days",WHITE,380,-160)
         FONT("33ZX",WHITE,-240,-240)
-        FONT("Flow of time",WHITE,-45,-290,20)
+        FONT("Flow of time",WHITE,0,-290,20)
+
+        FONT("1000H to Expert, 10000H to Master",WHITE,0,340,20)
 
         sd = round((times - count)/(3600*24),2)
-        FONT2(f"Day {sd}",WHITE,680,250) ###
+        FONT2(f"Day {sd}",WHITE,680,270) ###
 
 
         ######################################
